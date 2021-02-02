@@ -1,0 +1,25 @@
+version: '3.8'
+
+services: 
+  app:
+    image: e07001f70f28
+    ports: 
+      - '80:80'
+    depends_on: 
+      - db
+    links: 
+      - db
+  
+  db:
+    image: postgres
+    restart: always
+    ports: 
+      - "5433:5432"
+    volumes: 
+      - /var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_USER: admin
+
+    
+    
